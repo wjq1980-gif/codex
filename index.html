@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>可口可乐健康吗？短视频成片</title>
+  <style>
+    :root {
+      --coke-red: #e50914;
+      --deep-red: #7a0610;
+      --cream: #fff7e8;
+      --ink: #2b1115;
+      --soft: rgba(255, 255, 255, 0.84);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #171717;
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      color: var(--cream);
+    }
+
+    .phone-frame {
+      width: min(92vw, 420px);
+      aspect-ratio: 9 / 16;
+      position: relative;
+      overflow: hidden;
+      border-radius: 36px;
+      border: 10px solid #0f0f0f;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.34), transparent 16%),
+        radial-gradient(circle at 84% 28%, rgba(255, 255, 255, 0.16), transparent 20%),
+        linear-gradient(160deg, #ff2838 0%, var(--coke-red) 42%, var(--deep-red) 100%);
+    }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      padding: 44px 32px 74px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(26px) scale(0.98);
+      animation: sceneIn 30s linear infinite;
+    }
+
+    .scene:nth-of-type(1) { animation-delay: 0s; }
+    .scene:nth-of-type(2) { animation-delay: 5s; }
+    .scene:nth-of-type(3) { animation-delay: 11s; }
+    .scene:nth-of-type(4) { animation-delay: 18s; }
+    .scene:nth-of-type(5) { animation-delay: 24s; }
+
+    @keyframes sceneIn {
+      0%, 18% { opacity: 0; transform: translateY(26px) scale(0.98); }
+      2%, 15% { opacity: 1; transform: translateY(0) scale(1); }
+      19%, 100% { opacity: 0; transform: translateY(-26px) scale(1.02); }
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -12%;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.08);
+      left: var(--left);
+      animation: floatUp var(--speed) linear infinite;
+      animation-delay: var(--delay);
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) translateX(0); opacity: 0; }
+      15% { opacity: 0.75; }
+      to { transform: translateY(-126vh) translateX(28px); opacity: 0; }
+    }
+
+    h1, h2, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 10vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.08em;
+      text-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    }
+
+    h2 {
+      margin-top: 20px;
+      font-size: clamp(1.45rem, 6vw, 2.25rem);
+      line-height: 1.16;
+      color: #ffffff;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--ink);
+      background: var(--cream);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    .can {
+      width: 116px;
+      height: 208px;
+      position: relative;
+      border-radius: 24px 24px 18px 18px;
+      background: linear-gradient(90deg, #8b0510 0%, #f91627 42%, #aa0713 100%);
+      border: 3px solid rgba(255, 255, 255, 0.5);
+      box-shadow: inset -18px 0 28px rgba(0, 0, 0, 0.22), 0 24px 42px rgba(0, 0, 0, 0.26);
+    }
+
+    .can::before,
+    .can::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .can::before { top: 12px; }
+    .can::after { bottom: 12px; }
+
+    .can span {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 3.5rem;
+      font-weight: 900;
+    }
+
+    .caption {
+      margin-top: 22px;
+      max-width: 320px;
+      font-size: clamp(1.05rem, 4.8vw, 1.4rem);
+      line-height: 1.45;
+      color: var(--soft);
+      font-weight: 700;
+    }
+
+    .cards {
+      width: 100%;
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .card {
+      padding: 18px 16px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(10px);
+      font-size: 1.22rem;
+      font-weight: 900;
+      animation: pop 30s ease-in-out infinite;
+    }
+
+    .card:nth-child(1) { animation-delay: 11.1s; }
+    .card:nth-child(2) { animation-delay: 12s; }
+    .card:nth-child(3) { animation-delay: 12.9s; }
+
+    @keyframes pop {
+      0%, 38%, 100% { transform: translateX(-18px); opacity: 0; }
+      40%, 58% { transform: translateX(0); opacity: 1; }
+      60% { opacity: 0; }
+    }
+
+    .water {
+      width: 158px;
+      height: 210px;
+      border-radius: 26px 26px 42px 42px;
+      background: linear-gradient(#e8fbff 0 28%, #83ddff 28% 100%);
+      border: 5px solid rgba(255, 255, 255, 0.74);
+      position: relative;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+    }
+
+    .water::after {
+      content: "日常补水";
+      color: #0e5468;
+      font-weight: 900;
+      position: absolute;
+      inset: 45% 0 auto;
+    }
+
+    .final {
+      color: var(--ink);
+      background: var(--cream);
+      padding: 30px 24px;
+      border-radius: 30px;
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.24);
+    }
+
+    .final strong {
+      color: var(--coke-red);
+    }
+
+    .progress {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 30px;
+      height: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.26);
+    }
+
+    .progress::after {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 100%;
+      transform-origin: left;
+      background: var(--cream);
+      animation: progress 30s linear infinite;
+    }
+
+    @keyframes progress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scene,
+      .bubble,
+      .card,
+      .progress::after {
+        animation: none;
+      }
+
+      .scene:first-of-type {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="phone-frame" aria-label="可口可乐健康话题短视频">
+    <span class="bubble" style="--left: 8%; --size: 26px; --speed: 9s; --delay: 0s"></span>
+    <span class="bubble" style="--left: 24%; --size: 14px; --speed: 7s; --delay: -2s"></span>
+    <span class="bubble" style="--left: 52%; --size: 34px; --speed: 10s; --delay: -4s"></span>
+    <span class="bubble" style="--left: 76%; --size: 20px; --speed: 8s; --delay: -1s"></span>
+    <span class="bubble" style="--left: 88%; --size: 42px; --speed: 12s; --delay: -6s"></span>
+
+    <section class="scene">
+      <div class="tag">30秒科普</div>
+      <h1>可口可乐<br>健康吗？</h1>
+      <p class="caption">先别急着下结论。</p>
+    </section>
+
+    <section class="scene">
+      <div class="can"><span>?</span></div>
+      <h2>快乐口感 ≠ 健康饮品</h2>
+      <p class="caption">它可以带来愉悦，但不适合被包装成健康建议。</p>
+    </section>
+
+    <section class="scene">
+      <div class="tag">关键看这 3 点</div>
+      <div class="cards">
+        <div class="card">频率：别天天喝</div>
+        <div class="card">份量：小瓶更好控</div>
+        <div class="card">搭配：看整体饮食</div>
+      </div>
+    </section>
+
+    <section class="scene">
+      <div class="water"></div>
+      <h2>水更适合日常补水</h2>
+      <p class="caption">无糖茶、气泡水，也常是更稳妥的替代。</p>
+    </section>
+
+    <section class="scene">
+      <div class="final">
+        <h2><strong>想喝？</strong><br>可以偶尔享用</h2>
+        <p class="caption" style="color: #5b3338">把它当甜饮，而不是“健康饮品”。</p>
+      </div>
+    </section>
+
+    <div class="progress" aria-hidden="true"></div>
+  </main>
+</body>
+</html>
